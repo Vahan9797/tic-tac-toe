@@ -1,0 +1,6 @@
+.GameBoard {
+	display: flex;
+	flex: 0 33%;
+	align-items: center;
+	height: 300px;
+}

@@ -1,0 +1,15 @@
+.GameCell {
+	width: 100px;
+	height: 100px;
+	flex-basis: 33%;
+}
+
+.GameCell > * {
+	width: 90%;
+	height: 90%;
+	box-shadow: 0 0 5px #444, 0 0 5px #888;
+}
+
+.cell-btn {
+	font-size: 60px !important;
+}
