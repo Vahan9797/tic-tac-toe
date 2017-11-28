@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import 'react-toggle/style.css';
 import './App.css';
-import { Button } from 'reactstrap';
 import MainLayout from './Components/layout';
 
 class App extends Component {

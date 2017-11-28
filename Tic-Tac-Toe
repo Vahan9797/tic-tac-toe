@@ -1,0 +1,3 @@
+#!/bin/bash
+BROWSER=none npm start &
+npm run electron &

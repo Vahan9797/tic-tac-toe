@@ -16,10 +16,13 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 800,
-        minWidth: 800,
+        minWidth: 1000,
         minHeight: 600,
         backgroundColor: '#f1f1eb',
-        icon: path.join(__dirname, '../public/electron-app/main-icon.png')
+        icon: path.join(__dirname, '../public/electron-app/main-icon.png'),
+        webPreferences: {
+            devTools: false
+        }
     });
 
     // and load the index.html of the app.

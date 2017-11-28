@@ -1,0 +1,10 @@
+.GameBoard {
+	transform: translateY(50px);
+	width: 350px !important;
+	height: 350px !important;
+	display: flex;
+}
+
+.row {
+	text-align: center;
+}

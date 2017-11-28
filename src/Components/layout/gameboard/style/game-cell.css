@@ -1,0 +1,28 @@
+.GameCell {
+	display: inline-block;
+	float: none;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+	width: auto;
+	height: auto;
+	padding: 10px;
+}
+
+.GameCell > * {
+	width: 100px !important;
+	height: 100px !important;
+	box-shadow: 0 0 5px #444, 0 0 5px #888;
+}
+
+.cell-btn {
+	font-size: 60px !important;
+}
+
+.cell-btn.value-X:hover::after {
+	content: 'X' !important;
+}
+
+.cell-btn.value-O:hover::after {
+	content: 'O' !important;
+}
