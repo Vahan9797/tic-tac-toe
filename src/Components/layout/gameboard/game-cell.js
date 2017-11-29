@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style/game-cell.css';
 import { Button } from 'react-bootstrap';
+import DB from '../../../pseudo-db';
 
 class GameCell extends Component {
 	constructor(props) {
@@ -19,15 +20,11 @@ class GameCell extends Component {
 	render() {
 		// TODO: sync with pseudo-db and get cellStyle colors for :disabled
 		return(
-			<div className={`GameCell col-md-${this.props.colSize}`}>
+			<div className={`GameCell col-md-${this.props.childColSize}`}>
 				<Button bsStyle={this.props.cellStyle} className={"cell-btn" + (this.state.isEmpty ? ` value-${this.props.value}`: '')} onClick={ev => this.setCellValue(ev)} disabled={!this.state.isEmpty}>{this.state.cellValue}</Button>
 				<style dangerouslySetInnerHTML={{__html: `
-					.cell-btn:hover {
-						opacity: 0.7 !important;
-						vertical-align: center;
-					}
 					.cell-btn:disabled {
-						color: ${this.props.cellStyle} !important;
+						color: #${DB.colors[this.props.cellStyle]} !important;
 						background-color: #eee !important;
 						opacity: 1 !important;
 					}`}}/>

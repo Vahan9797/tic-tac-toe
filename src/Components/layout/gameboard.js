@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import './style/gameboard.css';
 import GameCell from './gameboard/game-cell';
+import DB from '../../pseudo-db';
 
 class GameBoard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			mainMatrix: {
-				size: 3,
-				parentColSize: 12,
-				childColSize: 4,
-			},
+			mainMatrix: DB.matrices.find(item => item.size === 3),
 			activePlayerValue: 'X'
 		}
 	}
@@ -24,7 +21,7 @@ class GameBoard extends Component {
 
 	render() {
 		return(
-			<div className={`GameBoard col-md-offset-${(this.state.mainMatrix.parentColSize - this.state.mainMatrix.childColSize) / 2}`}>
+			<div className={`GameBoard col-md-offset-${Math.ceil((this.state.mainMatrix.parentColSize - this.state.mainMatrix.childColSize) / 2)}`}>
 				<div className="row">
 					{Array(this.state.mainMatrix.size ** 2).fill().map((elem, index) => <GameCell
 						key={index}

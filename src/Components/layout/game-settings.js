@@ -28,7 +28,7 @@ class GameSettings extends Component {
 	}
 
 	handleSizeChange(event) {
-		this.setState({mainMatrix: DB.find(item => item.size === +event.target.value)});
+		this.setState({mainMatrix: DB.matrices.find(item => item.size === +event.target.value)});
 	}
 
 	handleColorChange(event) {

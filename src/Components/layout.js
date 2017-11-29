@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import GameBoard from './layout/gameboard';
 import GameSettings from './layout/game-settings';
+import DB from '../pseudo-db';
 
 class MainLayout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			gameStart: false,
-			mainMatrix: {
-				size: 3,
-				parentColSize: 12,
-				childColSize: 4,
-			},
+			mainMatrix: DB.matrices.find(item => item.size === 3),
 			activePlayerValue: 'X',
 			cellStyle: 'primary'
 		}
@@ -34,17 +31,19 @@ class MainLayout extends Component {
 
 	render() {
 		return(
-			<div className={`MainLayout col-md-${this.state.mainMatrix.parentColSize}`}>
+			<div className="MainLayout col-md-12">
 				<h2>Simple Tic-Tac-Toe game with React</h2>
 				<h5>Click on "Game Settings" to open/change your settings and start new game.</h5>
 				<GameSettings onSettingsChange={settings => this.applyNewSettings(settings)}/>
 
-				{this.state.gameStart && <GameBoard
-					mainMatrix={this.state.mainMatrix}
-					activePlayerValue={this.state.activePlayerValue}
-					cellStyle={this.state.cellStyle}
-					onActivePlayerChange={lastValue => this.handleActivePlayerChange(lastValue)}/>
-				}
+				<div className={`col-md-${this.state.mainMatrix.parentColSize}`}>
+					{this.state.gameStart && <GameBoard
+						mainMatrix={this.state.mainMatrix}
+						activePlayerValue={this.state.activePlayerValue}
+						cellStyle={this.state.cellStyle}
+						onActivePlayerChange={lastValue => this.handleActivePlayerChange(lastValue)}/>
+					}
+				</div>
 			</div>
 		)
 	}

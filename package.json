@@ -18,6 +18,7 @@
     "electron": "electron ."
   },
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "electron": "^1.7.9",
     "react-toggle": "^4.0.2"
   }
