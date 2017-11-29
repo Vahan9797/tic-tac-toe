@@ -1,8 +1,4 @@
-const electron = require('electron');
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
+const { app, BrowserWindow } = require('electron');
 
 const path = require('path');
 const url = require('url');
@@ -20,24 +16,21 @@ function createWindow() {
         minHeight: 600,
         backgroundColor: '#f1f1eb',
         icon: path.join(__dirname, '../public/electron-app/main-icon.png'),
-        webPreferences: {
-            devTools: false
-        }
     });
 
     // and load the index.html of the app.
     mainWindow.loadURL('http://localhost:3000');
 
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    mainWindow.webContents.on("did-fail-load", () => setTimeout(() => mainWindow.loadURL('http://localhost:3000'), 1000));
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        mainWindow = null
-    })
+        mainWindow = null;
+        app.quit();
+    });
 }
 
 // This method will be called when Electron has finished
@@ -46,13 +39,11 @@ function createWindow() {
 app.on('ready', createWindow);
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+/*app.on('window-all-closed', function () {
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
-});
+        app.quit();
+});*/
 
 app.on('activate', function () {
     // On OS X it's common to re-create a window in the app when the

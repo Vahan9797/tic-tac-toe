@@ -18,9 +18,8 @@ class GameCell extends Component {
 	}
 
 	render() {
-		// TODO: sync with pseudo-db and get cellStyle colors for :disabled
 		return(
-			<div className={`GameCell col-md-${this.props.childColSize}`}>
+			<div className="GameCell">
 				<Button bsStyle={this.props.cellStyle} className={"cell-btn" + (this.state.isEmpty ? ` value-${this.props.value}`: '')} onClick={ev => this.setCellValue(ev)} disabled={!this.state.isEmpty}>{this.state.cellValue}</Button>
 				<style dangerouslySetInnerHTML={{__html: `
 					.cell-btn:disabled {

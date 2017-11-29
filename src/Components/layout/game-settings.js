@@ -45,7 +45,6 @@ class GameSettings extends Component {
 	}
 
 	render() {
-		console.log(this.state.cellStyle);
 		return(
 			<div className="GameSettings">
 				<Button bsStyle="primary" onClick={() => this.openDialog()}>Game Settings <i className="glyphicon glyphicon-cog"></i></Button>

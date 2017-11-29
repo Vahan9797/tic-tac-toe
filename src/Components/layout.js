@@ -35,15 +35,12 @@ class MainLayout extends Component {
 				<h2>Simple Tic-Tac-Toe game with React</h2>
 				<h5>Click on "Game Settings" to open/change your settings and start new game.</h5>
 				<GameSettings onSettingsChange={settings => this.applyNewSettings(settings)}/>
-
-				<div className={`col-md-${this.state.mainMatrix.parentColSize}`}>
-					{this.state.gameStart && <GameBoard
-						mainMatrix={this.state.mainMatrix}
-						activePlayerValue={this.state.activePlayerValue}
-						cellStyle={this.state.cellStyle}
-						onActivePlayerChange={lastValue => this.handleActivePlayerChange(lastValue)}/>
-					}
-				</div>
+				{this.state.gameStart && <GameBoard
+					mainMatrix={this.state.mainMatrix}
+					activePlayerValue={this.state.activePlayerValue}
+					cellStyle={this.state.cellStyle}
+					onActivePlayerChange={lastValue => this.handleActivePlayerChange(lastValue)}/>
+				}
 			</div>
 		)
 	}
