@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body, html {
+	width: 640px;
+	height: 400px;
+	overflow: hidden;
+}
+
+div {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.loading {
+  display: block;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 50%;
+  width: 50%;
+
+  -webkit-animation: spin 1.5s linear infinite alternate; /* Safari */
+  animation: spin 1.5s linear infinite alternate;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<div><img src="./logo.svg" class="loading" alt="Loading..."/></div>
+
+</body>
+</html>
