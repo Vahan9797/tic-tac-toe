@@ -23,17 +23,21 @@ class GameBoard extends Component {
 		this.setState({activePlayerValue: nextProps.activePlayerValue});
 	}
 
+	componentDidMount() {
+		console.log(this.state.mainMatrix.cellSize);
+	}
+
 	render() {
 		return(
-			<div className={`GameBoard col-md-offset-${this.state.mainMatrix.parentColOffset}`}>
-				<div className={`col-md-${this.state.mainMatrix.parentColSize}`}>
-					<div className="container">
+			<div className="GameBoard">
+				<div className="col-md-12">
+					<div className="container center-div">
 						{Array(this.state.mainMatrix.size).fill().map((elem, index) => <div key={index} className="row">
 							{Array(this.state.mainMatrix.size).fill().map((elem, index) => <GameCell
 								key={index}
 								value={this.state.activePlayerValue}
 								cellStyle={this.props.cellStyle}
-								colSize={this.state.mainMatrix.childColSize}
+								cellSize={this.state.mainMatrix.cellSize}
 								onSetValue={currentValue => this.props.onActivePlayerChange(currentValue)} />)}
 							</div>)
 						}

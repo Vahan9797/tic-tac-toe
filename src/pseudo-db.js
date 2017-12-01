@@ -1,59 +1,64 @@
+const Range = (start, end) => Array(end - start + 1).fill().map((_, index) => start + index);
+
 export default {
 	matrices: [
 		{
 			size: 3,
-			parentColSize: 3,
-			childColSize: 1,
-			parentColOffset: 2
+			cellSize: 100,
+			winSteps: 3,
+			winCount: 1
 		},
 		{
 			size: 4,
-			parentColSize: 4,
-			childColSize: 1,
-			parentColOffset: 4
+			cellSize: 100,
+			winSteps: 4,
+			winCount: 1
 		},
 		{
 			size: 5,
-			parentColSize: 5,
-			childColSize: 1,
-			parentColOffset: 4
+			cellSize: 90,
+			winSteps: 5,
+			winCount: 1
 		},
 		{
 			size: 6,
-			parentColSize: 6,
-			childColSize: 1,
-			parentColOffset: 3
+			cellSize: 80,
+			winSteps: 6,
+			winCount: 1
 		},
 		{
 			size: 7,
-			parentColSize: 7,
-			childColSize: 1,
-			parentColOffset: 3
+			cellSize: 70,
+			winSteps: 7,
+			winCount: 1
 		},
 		{
 			size: 8,
-			parentColSize: 8,
-			childColSize: 1,
-			parentColOffset: 2
+			cellSize: 60,
+			winSteps: 8,
+			winCount: 1
 		},
 		{
 			size: 9,
-			parentColSize: 9,
-			childColSize: 1,
-			parentColOffset: 2
+			cellSize: 55,
+			winSteps: 9,
+			winCount: 1
 		},
 		{
 			size: 10,
-			parentColSize: 10,
-			childColSize: 1,
-			parentColOffset: 1
+			cellSize: 50,
+			winSteps: 10,
+			winCount: 1
 		}
 	],
+
 	colors: {
 		primary: '337ab7',
 		danger: 'd9534f',
 		info: '5bc0de',
 		warning: 'f0ad4e',
 		success: '5cb85c',
-	}
-}
+	},
+};
+
+export { Range };

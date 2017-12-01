@@ -1,8 +1,11 @@
 .GameBoard {
-	transform: translateY(50px);
-	width: 350px !important;
-	height: 350px !important;
+	transform: translateY(20px);
+	height: 50% !important;
 	display: flex;
+}
+
+.center-div {
+	margin: 0 auto !important;
 }
 
 .row {

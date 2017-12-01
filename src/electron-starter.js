@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron');
-const electron = require('electron');
 
 const path = require('path');
 const url = require('url');
+const exec = require('shelljs.exec');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -34,7 +34,9 @@ function createWindow() {
             loadingWindow.hide();
             loadingWindow.close();
         });
-        
+
+        //mainWindow.loadURL('http://localhost:3000');
+
         setTimeout(() => mainWindow.loadURL('http://localhost:3000'), 1000);
         
         mainWindow.on('closed', function () {

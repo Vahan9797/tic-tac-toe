@@ -8,13 +8,22 @@ class GameCell extends Component {
 		super(props);
 		this.state = {
 			cellValue: '',
-			isEmpty: true
+			isEmpty: true,
+			cellSize: ''
 		}
+	}
+
+	componentWillMount() {
+		this.setState({cellSize: this.props.cellSize});
 	}
 
 	setCellValue(event) {
 		event.stopPropagation();
 		this.setState({ cellValue: this.props.value, isEmpty: false }, () => this.props.onSetValue(this.state.cellValue));
+	}
+
+	componentDidMount() {
+		console.log(this.state.cellSize);
 	}
 
 	render() {
@@ -24,8 +33,12 @@ class GameCell extends Component {
 				<style dangerouslySetInnerHTML={{__html: `
 					.cell-btn:disabled {
 						color: #${DB.colors[this.props.cellStyle]} !important;
-						background-color: #eee !important;
-						opacity: 1 !important;
+					}
+
+					.cell-btn {
+						width: ${this.state.cellSize}px !important;
+						height: ${this.state.cellSize}px !important;
+						font-size: ${this.state.cellSize / 2}px !important;
 					}`}}/>
 			</div>
 		)
