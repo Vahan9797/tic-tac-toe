@@ -13,6 +13,7 @@ function createWindow() {
         width: 640,
         height: 400,
         backgroundColor: '#f1f1eb',
+        icon: path.join(__dirname, '../public/electron-app/main-icon.png'),
         show: false,
         frame: false
     });

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import GameBoard from './layout/gameboard';
 import GameSettings from './layout/game-settings';
-import DB from '../pseudo-db';
+import { Matrices } from '../pseudo-db';
 
 class MainLayout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			gameStart: false,
-			mainMatrix: DB.matrices.find(item => item.size === 3),
+			mainMatrix: Matrices.find(item => item.size === 3),
 			activePlayerValue: 'X',
 			cellStyle: 'primary'
 		}

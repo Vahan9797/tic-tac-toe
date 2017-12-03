@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle';
 import { Modal, Button, Col, Form, FormGroup, FormControl, ControlLabel, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
-import DB, { Range } from '../../pseudo-db';
+import { Matrices, Range } from '../../pseudo-db';
 
 class GameSettings extends Component {
 	constructor(props) {
@@ -10,7 +10,7 @@ class GameSettings extends Component {
 			showDialog: true,
 			playWithComputer: false,
 			computersValue: 'O',
-			mainMatrix: DB.matrices.find(item => item.size === 3),
+			mainMatrix: Matrices.find(item => item.size === 3),
 			activePlayerValue: 'X',
 			cellStyle: 'primary'
 		}
@@ -23,7 +23,7 @@ class GameSettings extends Component {
 	openDialog() {
 		this.setState({
 			showDialog: true,
-			mainMatrix: DB.matrices.find(item => item.size === 3),
+			mainMatrix: Matrices.find(item => item.size === 3),
 			playWithComputer: false
 		});
 	}
@@ -33,7 +33,7 @@ class GameSettings extends Component {
 	}
 
 	handleSizeChange(event) {
-		this.setState({mainMatrix: DB.matrices.find(item => item.size === +event.target.value)});
+		this.setState({mainMatrix: Matrices.find(item => item.size === +event.target.value)});
 	}
 
 	handleWinStepChange(event) {

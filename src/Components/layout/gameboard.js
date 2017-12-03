@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './style/gameboard.css';
 import GameCell from './gameboard/game-cell';
-import DB from '../../pseudo-db';
+import { Matrices } from '../../pseudo-db';
 
 class GameBoard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			mainMatrix: DB.matrices.find(item => item.size === 3),
+			mainMatrix: Matrices.find(item => item.size === 3),
 			activePlayerValue: 'X'
 		}
 	}
@@ -21,10 +21,6 @@ class GameBoard extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({activePlayerValue: nextProps.activePlayerValue});
-	}
-
-	componentDidMount() {
-		console.log(this.state.mainMatrix.cellSize);
 	}
 
 	render() {
