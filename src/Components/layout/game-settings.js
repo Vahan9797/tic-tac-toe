@@ -24,7 +24,8 @@ class GameSettings extends Component {
 		this.setState({
 			showDialog: true,
 			mainMatrix: Matrices.find(item => item.size === 3),
-			playWithComputer: false
+			playWithComputer: false,
+			cellStyle: 'primary'
 		});
 	}
 
@@ -52,7 +53,6 @@ class GameSettings extends Component {
 
 	triggerNewGameStart() {
 		this.setState({showDialog: false});
-		console.log(this.state.mainMatrix);
 		this.props.onSettingsChange({
 			mainMatrix: this.state.mainMatrix,
 			activePlayerValue: this.state.activePlayerValue,

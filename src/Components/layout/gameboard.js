@@ -27,6 +27,7 @@ class GameBoard extends Component {
 			activePlayerValue: nextProps.activePlayerValue,
 			cellStyle: nextProps.cellStyle
 		});
+		console.log('in gameboard componentWillReceiveProps');
 	}
 
 	render() {
