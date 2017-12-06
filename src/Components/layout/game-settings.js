@@ -52,6 +52,7 @@ class GameSettings extends Component {
 
 	triggerNewGameStart() {
 		this.setState({showDialog: false});
+		console.log(this.state.mainMatrix);
 		this.props.onSettingsChange({
 			mainMatrix: this.state.mainMatrix,
 			activePlayerValue: this.state.activePlayerValue,

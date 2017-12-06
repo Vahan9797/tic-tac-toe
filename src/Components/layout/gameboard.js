@@ -8,19 +8,25 @@ class GameBoard extends Component {
 		super(props);
 		this.state = {
 			mainMatrix: Matrices.find(item => item.size === 3),
-			activePlayerValue: 'X'
+			activePlayerValue: 'X',
+			cellStyle: "primary"
 		}
 	}
 
 	componentWillMount() {
 		this.setState({
 			mainMatrix: this.props.mainMatrix,
-			activePlayerValue: this.props.activePlayerValue
+			activePlayerValue: this.props.activePlayerValue,
+			cellStyle: this.props.cellStyle
 		});
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({activePlayerValue: nextProps.activePlayerValue});
+		this.setState({
+			mainMatrix: nextProps.mainMatrix,
+			activePlayerValue: nextProps.activePlayerValue,
+			cellStyle: nextProps.cellStyle
+		});
 	}
 
 	render() {
@@ -32,7 +38,7 @@ class GameBoard extends Component {
 							{Array(this.state.mainMatrix.size).fill().map((elem, index) => <GameCell
 								key={index}
 								value={this.state.activePlayerValue}
-								cellStyle={this.props.cellStyle}
+								cellStyle={this.state.cellStyle}
 								cellSize={this.state.mainMatrix.cellSize}
 								onSetValue={currentValue => this.props.onActivePlayerChange(currentValue)} />)}
 							</div>)

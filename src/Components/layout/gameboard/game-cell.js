@@ -9,12 +9,23 @@ class GameCell extends Component {
 		this.state = {
 			cellValue: '',
 			isEmpty: true,
-			cellSize: ''
+			cellSize: '',
+			cellStyle: "primary"
 		}
 	}
 
 	componentWillMount() {
-		this.setState({cellSize: this.props.cellSize});
+		this.setState({
+			cellSize: this.props.cellSize,
+			cellStyle: this.props.cellStyle
+		});
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			cellSize: nextProps.cellSize,
+			cellStyle: nextProps.cellStyle
+		});	
 	}
 
 	setCellValue(event) {
@@ -32,7 +43,7 @@ class GameCell extends Component {
 				<Button bsStyle={this.props.cellStyle} className={"cell-btn" + (this.state.isEmpty ? ` value-${this.props.value}`: '')} onClick={ev => this.setCellValue(ev)} disabled={!this.state.isEmpty}>{this.state.cellValue}</Button>
 				<style dangerouslySetInnerHTML={{__html: `
 					.cell-btn:disabled {
-						color: #${Colors[this.props.cellStyle]} !important;
+						color: #${Colors[this.state.cellStyle]} !important;
 					}
 
 					.cell-btn {

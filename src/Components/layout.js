@@ -15,8 +15,10 @@ class MainLayout extends Component {
 	}
 
 	applyNewSettings(settings) {
+		// console.log(settings.mainMatrix);
 		this.setState({
 			gameStart: true,
+			// mainMatrix: settings.mainMatrix,
 			mainMatrix: settings.mainMatrix,
 			activePlayerValue: settings.activePlayerValue,
 			cellStyle: settings.cellStyle
@@ -30,6 +32,7 @@ class MainLayout extends Component {
 	}
 
 	render() {
+		console.log('render');
 		return(
 			<div className="MainLayout col-md-12">
 				<h2>Simple Tic-Tac-Toe game with React</h2>
