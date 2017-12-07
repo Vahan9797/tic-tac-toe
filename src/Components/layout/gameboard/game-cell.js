@@ -10,26 +10,32 @@ class GameCell extends Component {
 			cellValue: '',
 			isEmpty: true,
 			cellSize: '',
-			cellStyle: "primary"
+			cellStyle: "primary",
+			cellID: ''
 		}
 	}
 
 	componentWillMount() {
-		this.setState({cellSize: this.props.cellSize});
-		console.log('in game-cell componentWillMount');
+		this.setState({
+			cellSize: this.props.cellSize,
+			cellStyle: this.props.cellStyle,
+			cellID: this.props.cellID
+		});
+		console.log('in game-cell componentWillMount', this.state.cellID);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			cellSize: nextProps.cellSize,
-			cellStyle: nextProps.cellStyle
+			cellStyle: nextProps.cellStyle,
+			isEmpty: this.state.isEmpty || nextProps.isEmpty
 		});
-		console.log('in game-cell componentWillReceiveProps');
+		console.log('in game-cell componentWillReceiveProps', this.state.cellID);
 	}
 
 	setCellValue(event) {
 		event.stopPropagation();
-		this.setState({ cellValue: this.props.value, isEmpty: false }, () => this.props.onSetValue(this.state.cellValue));
+		this.setState({ cellValue: this.props.value, isEmpty: false }, () => this.props.onSetValue(this.state.cellValue, this.state.cellID));
 	}
 
 	render() {

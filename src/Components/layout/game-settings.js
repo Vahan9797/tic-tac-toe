@@ -12,7 +12,9 @@ class GameSettings extends Component {
 			computersValue: 'O',
 			mainMatrix: Matrices.find(item => item.size === 3),
 			activePlayerValue: 'X',
-			cellStyle: 'primary'
+			cellStyle: 'primary',
+			winSteps: 3,
+			winCount: 1
 		}
 	}
 
@@ -38,13 +40,11 @@ class GameSettings extends Component {
 	}
 
 	handleWinStepChange(event) {
-		this.state.mainMatrix.winSteps = +event.target.value;
-		this.setState({mainMatrix: this.state.mainMatrix});
+		this.setState({winSteps: +event.target.value});
 	}
 
 	handleWinCountChange(event) {
-		this.state.mainMatrix.winCount = +event.target.value;
-		this.setState({mainMatrix: this.state.mainMatrix});
+		this.setState({winCount: +event.target.value});
 	}
 
 	handleColorChange(event) {
@@ -56,7 +56,9 @@ class GameSettings extends Component {
 		this.props.onSettingsChange({
 			mainMatrix: this.state.mainMatrix,
 			activePlayerValue: this.state.activePlayerValue,
-			cellStyle: this.state.cellStyle
+			cellStyle: this.state.cellStyle,
+			winSteps: this.state.winSteps,
+			winCount: this.state.winCount
 		});
 	}
 

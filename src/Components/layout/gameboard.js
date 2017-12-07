@@ -9,7 +9,8 @@ class GameBoard extends Component {
 		this.state = {
 			mainMatrix: Matrices.find(item => item.size === 3),
 			activePlayerValue: 'X',
-			cellStyle: "primary"
+			cellStyle: "primary",
+			emptyNewGameCells: true
 		}
 	}
 
@@ -25,7 +26,8 @@ class GameBoard extends Component {
 		this.setState({
 			mainMatrix: nextProps.mainMatrix,
 			activePlayerValue: nextProps.activePlayerValue,
-			cellStyle: nextProps.cellStyle
+			cellStyle: nextProps.cellStyle,
+			emptyNewGameCells: nextProps.mainMatrix.size !== this.state.mainMatrix.size
 		});
 		console.log('in gameboard componentWillReceiveProps');
 	}
@@ -35,13 +37,15 @@ class GameBoard extends Component {
 			<div className="GameBoard">
 				<div className="col-md-12">
 					<div className="container center-div">
-						{Array(this.state.mainMatrix.size).fill().map((elem, index) => <div key={index} className="row">
-							{Array(this.state.mainMatrix.size).fill().map((elem, index) => <GameCell
-								key={index}
+						{Array(this.state.mainMatrix.size).fill().map((elem, rowIndex) => <div key={rowIndex} className="row">
+							{Array(this.state.mainMatrix.size).fill().map((elem, cellIndex) => <GameCell
+								key={cellIndex}
+								cellID={{rowIndex, cellIndex}}
 								value={this.state.activePlayerValue}
 								cellStyle={this.state.cellStyle}
 								cellSize={this.state.mainMatrix.cellSize}
-								onSetValue={currentValue => this.props.onActivePlayerChange(currentValue)} />)}
+								isEmpty={this.state.emptyNewGameCells}
+								onSetValue={(currentValue, currentID) => this.props.onActivePlayerChange(currentValue, currentID)} />)}
 							</div>)
 						}
 					</div>
