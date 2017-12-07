@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameBoard from './layout/gameboard';
 import GameSettings from './layout/game-settings';
-import { Matrices } from '../pseudo-db';
+import { Matrices, antiDiagonalCalc } from '../pseudo-db';
 
 class MainLayout extends Component {
 	constructor(props) {
@@ -40,11 +40,11 @@ class MainLayout extends Component {
 		const horizontalValues = this.observeArray[cellID.rowIndex];
 		const verticalValues = this.observeArray.map(elem => elem[cellID.cellIndex]);
 		const diagonalValues = {
-			mainDiagonal: this.observeArray.map((_, index, array) => (index + rowOffset < array.length && index + colOffset < array.length) && array[index + rowOffset][index + colOffset]),
-			// antiDiagonal not working correctly, neither is probably the main one
-			antiDiagonal: this.observeArray.map((_, index, array) => (index + rowOffset < array.length && index + colOffset < array.length) && array[array.length - index - rowOffset][array.length - index - colOffset])
+			mainDiagonal: this.observeArray.map((_, index, array) => (index + rowOffset < array.length && index + colOffset < array.length) && array[index + rowOffset][index + colOffset]).filter(item => item !== false),
+			antiDiagonal: antiDiagonalCalc(this.observeArray, cellID)
 		}
-	
+
+		console.log(diagonalValues.antiDiagonal, cellID);
 	}
 
 	handleActivePlayerChange(lastValue) {

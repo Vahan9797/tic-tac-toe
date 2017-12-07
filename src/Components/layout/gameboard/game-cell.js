@@ -21,7 +21,6 @@ class GameCell extends Component {
 			cellStyle: this.props.cellStyle,
 			cellID: this.props.cellID
 		});
-		console.log('in game-cell componentWillMount', this.state.cellID);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -30,7 +29,6 @@ class GameCell extends Component {
 			cellStyle: nextProps.cellStyle,
 			isEmpty: this.state.isEmpty || nextProps.isEmpty
 		});
-		console.log('in game-cell componentWillReceiveProps', this.state.cellID);
 	}
 
 	setCellValue(event) {

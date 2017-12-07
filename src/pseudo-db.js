@@ -1,5 +1,26 @@
 const Range = (start, end) => Array(end - start + 1).fill().map((_, index) => start + index);
 
+const antiDiagonalCalc = (matrix, coords) => {
+	let size = matrix.length, diagonal = [], result = [];
+
+	for (let d = 0; d <= 2*(size-1); d++) {
+		for (let i = 0; i <= d; i++) {
+			let j = d - i;
+
+			if (i >= size || j >= size) continue;
+			diagonal.push(matrix[i][j]);
+			if (i === coords.rowIndex && j === coords.cellIndex) {
+				result = diagonal;
+			}
+		}
+		if (result.length) {
+			return result;
+		}
+
+		diagonal = [];
+	}
+}
+
 const Matrices = [
 	{
 		size: 3,
@@ -65,4 +86,4 @@ export default {
 	range: Range
 };
 
-export { Matrices, Colors, Range };
+export { Matrices, Colors, Range, antiDiagonalCalc };
